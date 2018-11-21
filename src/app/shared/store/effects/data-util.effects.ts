@@ -5,7 +5,7 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import { DataUtilService } from '../../services';
-import { filename, data3dTypeFn, data3dPrep } from '../../../utils/data-3d.prep';
+import { cast, line3dPrep } from '../../../utils/line3d.prep';
 
 import {
   LoadData,
@@ -16,7 +16,7 @@ import {
 
 
 @Injectable()
-export class ChartSharedEffects {
+export class DataEffects {
 
   constructor (
     private actions$: Actions,
@@ -26,8 +26,8 @@ export class ChartSharedEffects {
   @Effect()
   loadData$: Observable<Action> = this.actions$.pipe(
     ofType<LoadData>( DataUtilActionTypes.LoadData ),
-    switchMap(() => {
-      return this.dataService.loadCSV$( filename, data3dTypeFn )
+    switchMap(({ payload }) => {
+      return this.dataService.loadCSV$( payload, cast )
                 .pipe( map( data => new LoadDataSuccess( data )));
     })
   );
@@ -35,7 +35,7 @@ export class ChartSharedEffects {
   @Effect()
   runDataPrep$: Observable<Action> = this.actions$.pipe(
     ofType<LoadDataSuccess>( DataUtilActionTypes.LoadDataSuccess ),
-    map( action => data3dPrep( action.payload )),
+    map( action => line3dPrep( action.payload )),
     map( data => new RunDataPrepComplete( data ))
   );
 

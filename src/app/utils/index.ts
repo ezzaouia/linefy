@@ -1,1 +1,1 @@
-export * from './data-3d.prep';
+export * from './line3d.prep';

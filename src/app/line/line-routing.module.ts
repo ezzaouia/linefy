@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Line3dComponent } from './components';
+import { LinePageComponent } from './components';
 
 export const lineRoutes: Routes = [
   {
@@ -11,7 +11,7 @@ export const lineRoutes: Routes = [
   },
   {
     path: '3d',
-    component: Line3dComponent,
+    component: LinePageComponent,
   },
 ];
 

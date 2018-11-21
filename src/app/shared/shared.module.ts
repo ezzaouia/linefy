@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import * as fromStore from './store';
 
@@ -14,7 +15,9 @@ import { fromComponents } from './components';
     CommonModule,
     HttpClientModule,
     RouterModule,
+
     StoreModule.forFeature( 'shared', fromStore.reducers ),
+    EffectsModule.forFeature( fromStore.effects ),
   ],
   declarations: [ ...fromComponents ],
   providers: [ ...fromServices ],

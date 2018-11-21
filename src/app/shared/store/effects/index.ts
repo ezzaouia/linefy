@@ -1,7 +1,7 @@
-import { ChartSharedEffects } from './data-util.effects';
+import { DataEffects } from './data-util.effects';
 
 export const effects: any[] = [
-  ChartSharedEffects,
+  DataEffects,
 ];
 
 export * from './data-util.effects';
