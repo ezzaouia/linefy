@@ -1,5 +1,7 @@
-import { Line3dComponent } from './line-3d';
+import { Line3dComponent } from './line3d';
+import { LinePageComponent } from '../containers/linePage';
 
-export const fromComponents = [ Line3dComponent ];
+export const fromComponents = [ Line3dComponent, LinePageComponent ];
 
-export * from './line-3d';
+export * from './line3d';
+export * from '../containers/linePage';
